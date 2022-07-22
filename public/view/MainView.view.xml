@@ -1,0 +1,40 @@
+<mvc:View controllerName="teste.socket.controller.MainView"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:tnt="sap.tnt"
+    xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns="sap.m">
+    <tnt:ToolPage>
+        <tnt:header>
+            <tnt:ToolHeader>
+                <ToolbarSpacer/>
+                <Title text="Mensagens BTI" />
+                <ToolbarSpacer/>
+                <Text id="usuario" text="{usuarioLogado>/nome}" />
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:sideContent>
+            <tnt:SideNavigation>
+                <tnt:NavigationList	>
+                    <tnt:NavigationListItem id="usuarios" text="Usuarios" items="{usuarios>/}">
+                        <tnt:NavigationListItem text="{= ${usuarios>nome} || ${usuarios>id}}" />
+                    </tnt:NavigationListItem>
+                </tnt:NavigationList>
+            </tnt:SideNavigation>
+        </tnt:sideContent>
+        <tnt:mainContents>
+            <Page title="Mensagens">
+                <content>
+                    <List id="mensagens" items="{mensagens>/}">
+                        <StandardListItem cd:data="{mensagens>}" title="{mensagens>origem}" description="{mensagens>msg}" />
+                    </List>
+                </content>
+                <footer>
+                    <OverflowToolbar>
+                        <Button type="Accept" icon="sap-icon://paper-plane" width="5%"/>
+                        <Input width="90%" placeholder="Digite sua mensagem" submit="enviarMensagem" />
+                    </OverflowToolbar>
+                </footer>
+            </Page>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>
